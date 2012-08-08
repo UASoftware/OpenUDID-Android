@@ -121,7 +121,7 @@ public class OpenUDID_manager implements ServiceConnection{
 	
 	private void getMostFrequentOpenUDID() {
 		if (mReceivedOpenUDIDs.isEmpty() == false) {
-			final TreeMap<String,Integer> sorted_OpenUDIDS = new TreeMap(new ValueComparator());
+			final TreeMap<String,Integer> sorted_OpenUDIDS = new TreeMap<String,Integer>(new ValueComparator());
 			sorted_OpenUDIDS.putAll(mReceivedOpenUDIDs);
         
 			OpenUDID = sorted_OpenUDIDS.firstKey();
@@ -154,7 +154,7 @@ public class OpenUDID_manager implements ServiceConnection{
 	 * @param context	you current context
 	 */
 	public static void sync(Context context) {
-		//Initialise the Manager
+		//Initialize the Manager
 		OpenUDID_manager manager = new OpenUDID_manager(context);
 		
 		//Try to get the openudid from local preferences
@@ -180,8 +180,8 @@ public class OpenUDID_manager implements ServiceConnection{
 	/*
 	 * Used to sort the OpenUDIDs collected by occurrence
 	 */
-	private class ValueComparator implements Comparator {
-		public int compare(Object a, Object b) {
+	private class ValueComparator implements Comparator<String> {
+		public int compare(String a, String b) {
 
 			if(mReceivedOpenUDIDs.get(a) < mReceivedOpenUDIDs.get(b)) {
 				return 1;
