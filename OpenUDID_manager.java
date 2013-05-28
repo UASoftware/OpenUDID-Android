@@ -64,6 +64,7 @@ public class OpenUDID_manager implements ServiceConnection{
 						
 				}
 			}
+			data.recycle();
 		} catch (RemoteException e) {if (LOG) Log.e(TAG, "RemoteException: " + e.getMessage());}		    	    			
 		mContext.unbindService(this);
 		
